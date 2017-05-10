@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 
 import { Post } from "../../models/post";
 import { PostService } from '../../services/post.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user';
 
 @Component({
@@ -13,7 +13,7 @@ export class PostsListComponent {
 
     @Input() posts: Post[];
 
-    constructor(private _postService: PostService, private _router: Router) {}
+    constructor(private _postService: PostService, private _activatedRoute: ActivatedRoute, private _router: Router) {}
 
     /*------------------------------------------------------------------------------------------------------------------|
      | ~~~ Red Path ~~~             HECHO                                                                               |
@@ -24,7 +24,6 @@ export class PostsListComponent {
      |------------------------------------------------------------------------------------------------------------------*/
 
      mostrarAutor(autor: User) {
-         console.log(autor);
          this._postService.getUserPosts(autor.id).subscribe((posts) => {
              this.posts = posts;
          });
@@ -41,7 +40,6 @@ export class PostsListComponent {
  
 
      mostrarPost(post: Post) {
-         console.log(post);
          this._postService.getPostDetails(post.id).subscribe();
          this._router.navigate([`/posts/${post.id}`]);
      }

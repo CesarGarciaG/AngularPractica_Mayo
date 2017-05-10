@@ -21,7 +21,7 @@ export class PostsResolve implements Resolve<Post[]> {
          |-----------------------------------------------------------------------------------------*/
          
          console.log(route.params);
-         if(route.params.author) return this._postService.getUserPosts(route.params.author.id);
+         if(route.params.userId) return this._postService.getUserPosts(route.params.userId);
 
         /*-----------------------------------------------------------------------------------------|
          | ~~~ Yellow Path ~~~                                                                     |

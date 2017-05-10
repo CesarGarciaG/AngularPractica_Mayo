@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Post } from "../../models/post";
 import { User } from '../../models/user';
+import { Category } from '../../models/category';
 
 @Component({
     templateUrl: "post-details.component.html",
@@ -32,6 +33,7 @@ export class PostDetailsComponent implements OnInit {
      |---------------------------------------------------------------------------------------------------------------*/
 
      navegarAutor(autor: User) {
+         console.log(this._activatedRoute.data);
          this._router.navigate([`/posts/users/${autor.id}`]);
      }
 
@@ -42,5 +44,9 @@ export class PostDetailsComponent implements OnInit {
      | para hacer esto necesitas inyectar como dependencia el Router de la app. La ruta a navegar es '/posts/categories', |
      | pasando como parámetro el identificador de la categoría.                                                           |
      |--------------------------------------------------------------------------------------------------------------------*/
+
+     navegarCat(categoria: Category) {
+         this._router.navigate([`/posts/categories/${categoria.id}`]);
+     }
 
 }
