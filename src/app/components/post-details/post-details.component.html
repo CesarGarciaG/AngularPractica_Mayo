@@ -5,12 +5,12 @@
     <div class="author">
         <!--
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-        | Red Path                                                        |
+        | Red Path          HECHO                                         |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Un clic sobre el autor debería navegar a su colección de posts. |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
-        <span class="name blink-font">{{ post.author.name }}</span>
+        <span class="name blink-font" (click)="navegarAutor(post.author)">{{ post.author.name }}</span>
         <!--
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Blue Path         HECHO                                                       |

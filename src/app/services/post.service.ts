@@ -38,7 +38,7 @@ export class PostService {
     getUserPosts(id: number): Observable<Post[]> {
 
         /*----------------------------------------------------------------------------------------------|
-         | ~~~ Red Path ~~~                                                                             |
+         | ~~~ Red Path ~~~           HECHO                                                             |
          |----------------------------------------------------------------------------------------------|
          | Ahora mismo, esta función está obteniendo todos los posts existentes, y solo debería obtener |
          | aquellos correspondientes al autor indicado. Añade los parámetros de búsqueda oportunos para |
@@ -55,7 +55,7 @@ export class PostService {
          |----------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts`)
+                   .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate_lte=${new Date()}&_order=DESC`)
                    .map((response: Response) => Post.fromJsonToList(response.json()));
     }
 
