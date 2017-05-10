@@ -31,7 +31,7 @@ export class PostService {
          |----------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts?_sort=publicationDate_lte=${new Date()}&_order=DESC`)
+                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
                    .map((response: Response) => Post.fromJsonToList(response.json()));
     }
 
@@ -55,7 +55,7 @@ export class PostService {
          |----------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate_lte=${new Date()}&_order=DESC`)
+                   .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
                    .map((response: Response) => Post.fromJsonToList(response.json()));
     }
 
