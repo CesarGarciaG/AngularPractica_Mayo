@@ -20,16 +20,19 @@ export class PostsResolve implements Resolve<Post[]> {
          | mirar en los parámetros de la ruta, a ver qué encuentras.                               |
          |-----------------------------------------------------------------------------------------*/
          
-         console.log(route.params);
-         if(route.params.userId) return this._postService.getUserPosts(route.params.userId);
+        if(route.params.userId)
+            return this._postService.getUserPosts(route.params.userId);
 
         /*-----------------------------------------------------------------------------------------|
-         | ~~~ Yellow Path ~~~                                                                     |
+         | ~~~ Yellow Path ~~~           HECHO                                                     |
          |-----------------------------------------------------------------------------------------|
          | Modifica este Resolve para que, en caso de tener que obtener los posts correspondientes |
          | a una categoría, llame a la función 'getCategoryPosts()' del servicio PostService.      |
          | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
          |-----------------------------------------------------------------------------------------*/
+
+        if(route.params.categoryId)
+            return this._postService.getCategoryPosts(route.params.categoryId);
 
         return this._postService.getPosts();
     }

@@ -33,12 +33,11 @@ export class PostDetailsComponent implements OnInit {
      |---------------------------------------------------------------------------------------------------------------*/
 
      navegarAutor(autor: User) {
-         console.log(this._activatedRoute.data);
          this._router.navigate([`/posts/users/${autor.id}`]);
      }
 
     /*--------------------------------------------------------------------------------------------------------------------|
-     | ~~~ Yellow Path ~~~                                                                                                |
+     | ~~~ Yellow Path ~~~           HECHO                                                                                |
      |--------------------------------------------------------------------------------------------------------------------|
      | Añade un manejador que navegue a la dirección correspondiente a los posts de la categoría indicada. Recuerda que   |
      | para hacer esto necesitas inyectar como dependencia el Router de la app. La ruta a navegar es '/posts/categories', |

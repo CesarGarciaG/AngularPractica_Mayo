@@ -62,7 +62,7 @@ export class PostService {
     getCategoryPosts(id: number): Observable<Post[]> {
 
         /*--------------------------------------------------------------------------------------------------|
-         | ~~~ Yellow Path ~~~                                                                              |
+         | ~~~ Yellow Path ~~~        HECHO                                                                 |
          |--------------------------------------------------------------------------------------------------|
          | Ahora mismo, esta función está obteniendo todos los posts existentes, y solo debería obtener     |
          | aquellos correspondientes a la categoría indicada. Añade los parámetros de búsqueda oportunos    |
@@ -83,8 +83,31 @@ export class PostService {
          |--------------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts`)
-                   .map((response: Response) => Post.fromJsonToList(response.json()));
+                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
+                   .map((response: Response) => {
+                        const resJson = response.json();
+                        let index: number = 0;
+                        let hasCat: boolean = false;
+                        console.log(resJson);
+                        for(let i = 0; i < resJson.length; i++) {
+                            for(let j = 0; j < resJson[i].categories.length; j++) {
+                                // debugger;
+                                let categoria = resJson[i].categories[j];
+                                console.log(categoria);
+                                if(categoria.id == id) {
+                                    hasCat = true;
+                                }
+                                console.log(resJson[i].categories[j].id, hasCat);
+                            }
+                            if(!hasCat) {
+                                resJson.splice(i, 1);
+                                i--;
+                            }
+                            hasCat = false;
+                        }
+                        console.log(resJson);
+                        return Post.fromJsonToList(resJson);
+                   });
     }
 
     getPostDetails(id: number): Observable<Post> {

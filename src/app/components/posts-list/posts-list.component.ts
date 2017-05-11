@@ -13,7 +13,7 @@ export class PostsListComponent {
 
     @Input() posts: Post[];
 
-    constructor(private _postService: PostService, private _activatedRoute: ActivatedRoute, private _router: Router) {}
+    constructor(private _postService: PostService, private _router: Router) {}
 
     /*------------------------------------------------------------------------------------------------------------------|
      | ~~~ Red Path ~~~             HECHO                                                                               |
