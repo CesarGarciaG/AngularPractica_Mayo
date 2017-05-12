@@ -93,11 +93,11 @@ export class PostService {
                             for(let j = 0; j < resJson[i].categories.length; j++) {
                                 // debugger;
                                 let categoria = resJson[i].categories[j];
-                                console.log(categoria);
+                                // console.log(categoria);
                                 if(categoria.id == id) {
                                     hasCat = true;
                                 }
-                                console.log(resJson[i].categories[j].id, hasCat);
+                                // console.log(resJson[i].categories[j].id, hasCat);
                             }
                             if(!hasCat) {
                                 resJson.splice(i, 1);
@@ -105,7 +105,7 @@ export class PostService {
                             }
                             hasCat = false;
                         }
-                        console.log(resJson);
+                        // console.log(resJson);
                         return Post.fromJsonToList(resJson);
                    });
     }
@@ -113,13 +113,16 @@ export class PostService {
     getPostDetails(id: number): Observable<Post> {
         return this._http
                    .get(`${this._backendUri}/posts/${id}`)
-                   .map((response: Response) => Post.fromJson(response.json()));
+                   .map((response: Response) => {
+                        // console.log(response.json());
+                        return Post.fromJson(response.json());
+                   })
     }
 
     createPost(post: Post): Observable<Post> {
 
         /*----------------------------------------------------------------------------------|
-         | ~~~ Purple Path ~~~                                                              |
+         | ~~~ Purple Path ~~~        HECHO                                                 |
          |----------------------------------------------------------------------------------|
          | Utiliza el cliente HTTP para guardar en servidor el post indicado. La ruta sobre |
          | la cual tienes que hacer la petición POST es '/posts'. Recuerda que siempre que  |
@@ -127,7 +130,9 @@ export class PostService {
          | datos actualizados obtenidos tras la inserción; puedes usar la función estática  |
          | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
          |----------------------------------------------------------------------------------*/
-
-        return null;
+        return this._http
+                    .post(`${this._backendUri}/posts`, post)
+                    .map((response: Response) => Post.fromJson(response.json()));
+        // return null;
     }
 }
