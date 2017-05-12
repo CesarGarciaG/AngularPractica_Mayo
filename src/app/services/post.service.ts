@@ -5,6 +5,7 @@ import "rxjs/add/operator/map";
 
 import { BackendUri } from "./settings.service";
 import { Post } from "../models/post";
+import { Category } from '../models/category';
 
 @Injectable()
 export class PostService {
@@ -85,28 +86,36 @@ export class PostService {
         return this._http
                    .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
                    .map((response: Response) => {
-                        const resJson = response.json();
-                        let index: number = 0;
-                        let hasCat: boolean = false;
-                        console.log(resJson);
-                        for(let i = 0; i < resJson.length; i++) {
-                            for(let j = 0; j < resJson[i].categories.length; j++) {
-                                // debugger;
-                                let categoria = resJson[i].categories[j];
-                                // console.log(categoria);
-                                if(categoria.id == id) {
-                                    hasCat = true;
-                                }
-                                // console.log(resJson[i].categories[j].id, hasCat);
-                            }
-                            if(!hasCat) {
-                                resJson.splice(i, 1);
-                                i--;
-                            }
-                            hasCat = false;
-                        }
+                        // const resJson = response.json();
+                        // let hasCat: boolean = false;
                         // console.log(resJson);
-                        return Post.fromJsonToList(resJson);
+                        // for(let i = 0; i < resJson.length; i++) {
+                        //     for(let j = 0; j < resJson[i].categories.length; j++) {
+                        //         // debugger;
+                        //         let categoria = resJson[i].categories[j];
+                        //         // console.log(categoria);
+                        //         if(categoria.id == id) {
+                        //             hasCat = true;
+                        //         }
+                        //         // console.log(resJson[i].categories[j].id, hasCat);
+                        //     }
+                        //     if(!hasCat) {
+                        //         resJson.splice(i, 1);
+                        //         i--;
+                        //     }
+                        //     hasCat = false;
+                        // }
+                        return Post.fromJsonToList(response.json()).filter((post: Post) => {
+                            let index = post.categories.findIndex((category: Category) => {
+                                return category.id === +id;
+                            });
+                            if(index === -1) {
+                                return false;
+                            }
+                            return true;
+                        })
+                        // console.log(resJson);
+                        // return Post.fromJsonToList(resJson);
                    });
     }
 
@@ -134,5 +143,14 @@ export class PostService {
                     .post(`${this._backendUri}/posts`, post)
                     .map((response: Response) => Post.fromJson(response.json()));
         // return null;
+    }
+
+    editPost(post: Post): Observable<Post> {
+        // return this._http
+        //             .put(`${this._backendUri}/posts/${post.id}`, post)
+        //             .map((response: Response) => Post.fromJson(response.json()));
+        console.log(post);
+        debugger;
+        return null;
     }
 }
