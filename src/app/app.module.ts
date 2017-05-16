@@ -31,6 +31,7 @@ import { SearchBoxComponent } from "./components/search-box/search-box.component
 import { UserPostsComponent } from "./components/user-posts/user-posts.component";
 import { FromNowPipe } from './pipes/from-now.pipe';
 import { EditStoryComponent } from './components/edit-story/edit-story.component';
+import { PostLikesComponent } from './components/post-likes/post-likes.component';
 
 @NgModule({
     imports: [
@@ -62,7 +63,8 @@ import { EditStoryComponent } from './components/edit-story/edit-story.component
         SearchBoxComponent,
         UserPostsComponent,
         FromNowPipe,
-        EditStoryComponent
+        EditStoryComponent,
+        PostLikesComponent
     ],
     providers: [
         BackendUriProvider,

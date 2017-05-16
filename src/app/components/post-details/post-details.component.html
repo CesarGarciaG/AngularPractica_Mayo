@@ -19,10 +19,13 @@
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
         <span class="date">{{ post.publicationDate | fromNow }}</span>
-        <span class="u-pull-left action-link blink-font" (click)="navegarEdit(post)"><a>Editar historia</a></span>
+        <span *ngIf="post.author.name === usuario.name"
+              class="name blink-font" (click)="navegarEdit(post)">Editar historia</span>
             <!--<a routerLink="/edit-story">Editar historia</a>
         </div>-->
     </div>
+    <post-likes class="u-pull-right"
+                [likes]="post.likes"></post-likes>
 </div>
 <div class="post">
     <h3>{{ post.title }}</h3>

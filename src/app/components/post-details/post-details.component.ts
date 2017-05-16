@@ -12,6 +12,7 @@ import { Category } from '../../models/category';
 export class PostDetailsComponent implements OnInit {
 
     post: Post;
+    usuario: User = User.defaultUser();
 
     constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
 

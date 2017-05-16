@@ -86,6 +86,8 @@ export class PostService {
         return this._http
                    .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
                    .map((response: Response) => {
+                        // LA FORMA CHAPUZA (también funciona)
+                        //
                         // const resJson = response.json();
                         // let hasCat: boolean = false;
                         // console.log(resJson);
