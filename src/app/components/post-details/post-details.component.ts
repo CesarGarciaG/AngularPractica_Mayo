@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Post } from "../../models/post";
@@ -46,6 +46,11 @@ export class PostDetailsComponent implements OnInit {
 
      navegarCat(categoria: Category) {
          this._router.navigate([`/posts/categories/${categoria.id}`]);
+     }
+
+     navegarEdit(post: Post) {
+        this._router.navigate([`/edit-story/${post.id}`]);
+        console.log(post);
      }
 
 }

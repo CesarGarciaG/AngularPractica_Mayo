@@ -20,7 +20,7 @@
         type="text"
         placeholder="Título"
         name="title"
-        ngModel
+        [(ngModel)]="postEditing.title"
         #titleRef="ngModel"
         required
         class="u-full-width">
@@ -35,7 +35,7 @@
     <textarea id="intro"
         placeholder="Introduce tu historia"
         name="intro"
-        ngModel
+        [(ngModel)]="postEditing.intro"
         #introRef="ngModel"
         required
         class="u-full-width georgia-font"
@@ -51,12 +51,12 @@
     <textarea id="body"
         placeholder="Cuenta tu historia"
         name="body"
-        ngModel
+        [(ngModel)]="postEditing.body"
         #bodyRef="ngModel"
         required
         class="u-full-width georgia-font"
         autogrow></textarea>
-    <div>
+    <div *ngIf="isNew">
         <div>
             <label (click)="setScheduling(false)">
                 <span class="radio-input" [class.active]="!publicationDateScheduled"></span>
