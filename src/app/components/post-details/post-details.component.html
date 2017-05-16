@@ -25,7 +25,8 @@
         </div>-->
     </div>
     <post-likes class="u-pull-right"
-                [likes]="post.likes"></post-likes>
+                [likes]="post.likes"
+                (likeBtn)="guardarLikes($event)"></post-likes>
 </div>
 <div class="post">
     <h3>{{ post.title }}</h3>

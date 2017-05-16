@@ -1,17 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'post-likes',
   templateUrl: './post-likes.component.html',
   styleUrls: ['./post-likes.component.css']
 })
-export class PostLikesComponent implements OnInit {
+export class PostLikesComponent {
 
-  @Input() likes: number = 0;
+  @Input() likes: number;
+  @Output() likeBtn: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
+  emitLikes() {
+      this.likes++;
+      this.likeBtn.emit(this.likes);
   }
-
 }

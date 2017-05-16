@@ -115,7 +115,7 @@ export class PostService {
                                 return false;
                             }
                             return true;
-                        })
+                        });
                         // console.log(resJson);
                         // return Post.fromJsonToList(resJson);
                    });

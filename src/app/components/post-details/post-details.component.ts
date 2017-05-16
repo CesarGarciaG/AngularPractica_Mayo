@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from "../../models/post";
 import { User } from '../../models/user';
 import { Category } from '../../models/category';
+import { PostService } from '../../services/post.service';
 
 @Component({
     templateUrl: "post-details.component.html",
@@ -14,7 +15,9 @@ export class PostDetailsComponent implements OnInit {
     post: Post;
     usuario: User = User.defaultUser();
 
-    constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
+    constructor(private _activatedRoute: ActivatedRoute,
+                private _router: Router,
+                private _postService: PostService) { }
 
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post}) => this.post = data.post);
@@ -52,6 +55,12 @@ export class PostDetailsComponent implements OnInit {
      navegarEdit(post: Post) {
         this._router.navigate([`/edit-story/${post.id}`]);
         console.log(post);
+     }
+
+     guardarLikes(likes: number) {
+         console.log(this.post);
+         this.post.likes = likes;
+         this._postService.editPost(this.post);
      }
 
 }
