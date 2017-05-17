@@ -9,6 +9,8 @@ import { UserPostsComponent } from "./components/user-posts/user-posts.component
 import { PostDetailsResolve } from "./services/post-details-resolve.service";
 import { PostsResolve } from "./services/posts-resolve.service";
 import { EditStoryComponent } from './components/edit-story/edit-story.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
     {
@@ -42,6 +44,14 @@ const routes: Routes = [
         resolve: {
             post: PostDetailsResolve
         }
+    },
+    {
+        path: "login",
+        component: LoginComponent
+    },
+    {
+        path: "logout",
+        component: LogoutComponent
     },
     {
         path: "posts/:postId",

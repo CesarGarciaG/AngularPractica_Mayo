@@ -304,8 +304,9 @@
       "id": 13
     },
     {
+      "id": 14,
       "title": "New story post post edit do it for your lava",
-      "intro": "La buena",
+      "intro": "La buena sesersrasersert",
       "body": "I found you... Faker!",
       "media": "",
       "publicationDate": 1494924113374,
@@ -317,8 +318,24 @@
         "email": "keepcoder@postium.com",
         "avatar": "assets/images/keepcoder.jpg"
       },
+      "likes": 0
+    },
+    {
+      "title": "Historia post-login",
+      "intro": "Mira qué chulo sale mi nombre desde la variable de login ^^",
+      "body": "100% verídico no fake",
+      "media": "",
+      "publicationDate": 1495011693450,
+      "categories": [],
+      "author": {
+        "id": 1,
+        "name": "KeepCoder",
+        "username": "keepcoder",
+        "email": "keepcoder@postium.com",
+        "avatar": "assets/images/keepcoder.jpg"
+      },
       "likes": 0,
-      "id": 14
+      "id": 15
     }
   ],
   "categories": [

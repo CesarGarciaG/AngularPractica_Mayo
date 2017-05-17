@@ -1,0 +1,25 @@
+<form #loginForm="ngForm" (ngSubmit)="submitLogin(loginForm)">
+    
+    <input id="username"
+          type="text"
+          placeholder="Usuario"
+          name="username"
+          ngModel
+          #usernameRef="ngModel"
+          required
+          class="u-full-width">
+          
+    <input id="password"
+        type="password"
+        placeholder="Contraseña"
+        name="password"
+        ngModel
+        #passwordRef="ngModel"
+        required
+        class="u-full-width">
+
+    <button type="submit" class="button-primary u-pull-right" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+
+    <a href="" (click)="defaultLogin()">Iniciar Sesión con usuario por defecto</a>
+
+</form>

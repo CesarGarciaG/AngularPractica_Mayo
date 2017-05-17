@@ -13,7 +13,7 @@ import { PostService } from '../../services/post.service';
 export class PostDetailsComponent implements OnInit {
 
     post: Post;
-    usuario: User = User.defaultUser();
+    usuario: User;
 
     constructor(private _activatedRoute: ActivatedRoute,
                 private _router: Router,
@@ -21,6 +21,15 @@ export class PostDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post}) => this.post = data.post);
+        if(localStorage.getItem('usuarioActual'))
+            this.usuario = JSON.parse(localStorage.getItem('usuarioActual'));
+        else this.usuario = {
+            id: 0,
+            name: '',
+            username: '',
+            email: '',
+            avatar: ''
+        };
         window.scrollTo(0, 0);
     }
 

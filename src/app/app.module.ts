@@ -32,6 +32,8 @@ import { UserPostsComponent } from "./components/user-posts/user-posts.component
 import { FromNowPipe } from './pipes/from-now.pipe';
 import { EditStoryComponent } from './components/edit-story/edit-story.component';
 import { PostLikesComponent } from './components/post-likes/post-likes.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
     imports: [
@@ -64,7 +66,9 @@ import { PostLikesComponent } from './components/post-likes/post-likes.component
         UserPostsComponent,
         FromNowPipe,
         EditStoryComponent,
-        PostLikesComponent
+        PostLikesComponent,
+        LoginComponent,
+        LogoutComponent
     ],
     providers: [
         BackendUriProvider,
