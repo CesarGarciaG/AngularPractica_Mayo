@@ -1,4 +1,4 @@
 <div>
     <span>Likes: </span>{{ likes }}
 </div>
-<button class="button primary" (click)="emitLikes()">Like!</button>
+<button class="button primary" [disabled]="isLiked" (click)="emitLikes()">Like!</button>

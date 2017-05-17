@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../models/user';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'login',
@@ -10,6 +11,10 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   constructor(private _router: Router) { }
+
+  submitLogin(form: FormGroup) {
+    console.log('Enviado (es broma)');
+  }
 
   defaultLogin() {
     console.log(localStorage.getItem('usuarioActual'));

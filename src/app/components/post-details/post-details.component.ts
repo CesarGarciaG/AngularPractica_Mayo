@@ -67,9 +67,10 @@ export class PostDetailsComponent implements OnInit {
      }
 
      guardarLikes(likes: number) {
-         console.log(this.post);
          this.post.likes = likes;
-         this._postService.editPost(this.post);
+         this.post.userLiked.push(JSON.parse(localStorage.getItem('usuarioActual')).id);
+         console.log(this.post);
+         this._postService.editPost(this.post).subscribe();
      }
 
 }

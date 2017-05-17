@@ -24,8 +24,10 @@
             <!--<a routerLink="/edit-story">Editar historia</a>
         </div>-->
     </div>
-    <post-likes class="u-pull-right"
+    <post-likes *ngIf="usuario.name !== ''"
+                class="u-pull-right"
                 [likes]="post.likes"
+                [userLiked]="post.userLiked"
                 (likeBtn)="guardarLikes($event)"></post-likes>
 </div>
 <div class="post">

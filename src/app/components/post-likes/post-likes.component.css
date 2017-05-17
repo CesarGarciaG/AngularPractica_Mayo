@@ -1,0 +1,9 @@
+button:disabled {
+    border-color: #b3b3b1 !important;
+    color: #b3b3b1 !important;
+}
+
+::-webkit-clear-button {
+    opacity: 0;
+    pointer-events: none;
+}
