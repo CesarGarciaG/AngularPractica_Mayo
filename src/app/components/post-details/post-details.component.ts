@@ -67,8 +67,16 @@ export class PostDetailsComponent implements OnInit {
      }
 
      guardarLikes(likes: number) {
-         this.post.likes = likes;
-         this.post.userLiked.push(JSON.parse(localStorage.getItem('usuarioActual')).id);
+         if(this.post.likes > likes) {
+            this.post.likes = likes;
+            this.post.userLiked.splice(this.post.userLiked.findIndex((userId: number) => {
+                return userId = JSON.parse(localStorage.getItem('usuarioActual')).id;
+            }), 1);
+         }
+         else if(this.post.likes < likes) {
+            this.post.likes = likes;
+            this.post.userLiked.push(JSON.parse(localStorage.getItem('usuarioActual')).id);
+         }
         //  console.log(this.post);
          this._postService.editPost(this.post).subscribe();
      }

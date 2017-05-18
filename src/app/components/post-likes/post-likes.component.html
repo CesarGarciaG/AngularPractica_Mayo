@@ -1,4 +1,11 @@
-<div>
-    <span>Likes: </span>{{ likes }}
-</div>
-<button class="button primary" [disabled]="isLiked" (click)="emitLikes()">Like!</button>
+<button class="button primary fa fa-thumbs-o-up"
+        *ngIf="!isLiked"
+        aria-hidden="true"  
+        (click)="emitLikes()"
+        title="¡Me gusta!">  {{ likes }}</button>
+
+<button class="button primary fa fa-thumbs-o-down"
+        *ngIf="isLiked"
+        aria-hidden="true" 
+        (click)="emitLikes()"
+        title="Ya no me gusta">  {{ likes }}</button>

@@ -44,7 +44,6 @@ export class PostService {
         return this._http
                    .get(`${this._backendUri}/posts?${ordenado}&${value}`)
                    .map((response: Response) => {
-                       console.log(response.json());
                        return Post.fromJsonToList(response.json());
                    });
     }

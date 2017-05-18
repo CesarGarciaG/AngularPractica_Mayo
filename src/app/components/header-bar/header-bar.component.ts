@@ -15,7 +15,7 @@ export class HeaderBarComponent {
 
     ngOnInit() {
         if(localStorage.getItem('usuarioActual'))
-            this.usuarioActual = localStorage.getItem('usuarioActual');
+            this.usuarioActual = JSON.parse(localStorage.getItem('usuarioActual')).name;
     }
 
     searchPost(value: string) {

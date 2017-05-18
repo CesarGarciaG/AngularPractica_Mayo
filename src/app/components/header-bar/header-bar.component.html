@@ -12,7 +12,7 @@
             <a *ngIf="usuarioActual === ''"
                 routerLink="/login">Iniciar Sesión</a>
             <a *ngIf="usuarioActual !== ''"
-                routerLink="/logout" (click)="logout()">Cerrar Sesión</a>
+                routerLink="/logout" (click)="logout()">¡Hola {{ usuarioActual }}! (Cerrar Sesión)</a>
         </div>
         <div class="u-pull-right action-link blink-font">
             <!--

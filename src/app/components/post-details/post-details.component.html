@@ -21,8 +21,6 @@
         <span class="date">{{ post.publicationDate | fromNow }}</span>
         <span *ngIf="post.author.name === usuario.name"
               class="name blink-font" (click)="navegarEdit(post)">Editar historia</span>
-            <!--<a routerLink="/edit-story">Editar historia</a>
-        </div>-->
     </div>
     <post-likes *ngIf="usuario.name !== ''"
                 class="u-pull-right"
