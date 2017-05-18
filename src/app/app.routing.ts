@@ -7,15 +7,23 @@ import { NewStoryComponent } from "./components/new-story/new-story.component";
 import { PostDetailsComponent } from "./components/post-details/post-details.component";
 import { UserPostsComponent } from "./components/user-posts/user-posts.component";
 import { PostDetailsResolve } from "./services/post-details-resolve.service";
-import { PostsResolve } from "./services/posts-resolve.service";
+import { PostsResolve } from './services/posts-resolve.service';
 import { EditStoryComponent } from './components/edit-story/edit-story.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { SearchPostsComponent } from './components/search-posts/search-posts.component';
 
 const routes: Routes = [
     {
         path: "posts",
         component: NewsComponent,
+        resolve: {
+            posts: PostsResolve
+        }
+    },
+    {
+        path: "search-posts",
+        component: SearchPostsComponent,
         resolve: {
             posts: PostsResolve
         }

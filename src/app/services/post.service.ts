@@ -2,6 +2,8 @@ import { Inject, Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
+import * as moment from "moment";
+import "moment/locale/es";
 
 import { BackendUri } from "./settings.service";
 import { Post } from "../models/post";
@@ -32,8 +34,19 @@ export class PostService {
          |----------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
+                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${moment()}`)
                    .map((response: Response) => Post.fromJsonToList(response.json()));
+    }
+
+    getPostsSearched(value: string): Observable<Post[]> {
+        const ordenado: string = `_sort=publicationDate&_order=DESC&publicationDate_lte=${moment()}`;
+        localStorage.removeItem('searchValue');
+        return this._http
+                   .get(`${this._backendUri}/posts?${ordenado}&${value}`)
+                   .map((response: Response) => {
+                       console.log(response.json());
+                       return Post.fromJsonToList(response.json());
+                   });
     }
 
     getUserPosts(id: number): Observable<Post[]> {
@@ -56,7 +69,7 @@ export class PostService {
          |----------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
+                   .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate&_order=DESC&publicationDate_lte=${moment()}`)
                    .map((response: Response) => Post.fromJsonToList(response.json()));
     }
 
@@ -84,7 +97,7 @@ export class PostService {
          |--------------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${new Date().valueOf()}`)
+                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${moment()}`)
                    .map((response: Response) => {
                         // LA FORMA CHAPUZA (también funciona)
                         //

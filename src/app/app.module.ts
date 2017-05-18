@@ -34,6 +34,7 @@ import { EditStoryComponent } from './components/edit-story/edit-story.component
 import { PostLikesComponent } from './components/post-likes/post-likes.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { SearchPostsComponent } from './components/search-posts/search-posts.component';
 
 @NgModule({
     imports: [
@@ -68,7 +69,8 @@ import { LogoutComponent } from './components/logout/logout.component';
         EditStoryComponent,
         PostLikesComponent,
         LoginComponent,
-        LogoutComponent
+        LogoutComponent,
+        SearchPostsComponent
     ],
     providers: [
         BackendUriProvider,

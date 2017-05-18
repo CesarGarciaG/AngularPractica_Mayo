@@ -301,6 +301,7 @@
       "userLiked": []
     },
     {
+      "id": 13,
       "title": "New story post edit",
       "intro": "aspdjaspdojaspodjaspodjpo",
       "body": "jajajajaja salu2",
@@ -314,9 +315,10 @@
         "email": "keepcoder@postium.com",
         "avatar": "assets/images/keepcoder.jpg"
       },
-      "likes": 0,
-      "userLiked": [],
-      "id": 13
+      "likes": 1,
+      "userLiked": [
+        1
+      ]
     },
     {
       "id": 14,
@@ -333,8 +335,10 @@
         "email": "keepcoder@postium.com",
         "avatar": "assets/images/keepcoder.jpg"
       },
-      "likes": 0,
-      "userLiked": []
+      "likes": 1,
+      "userLiked": [
+        1
+      ]
     },
     {
       "id": 15,

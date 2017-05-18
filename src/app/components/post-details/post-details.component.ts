@@ -63,13 +63,13 @@ export class PostDetailsComponent implements OnInit {
 
      navegarEdit(post: Post) {
         this._router.navigate([`/edit-story/${post.id}`]);
-        console.log(post);
+        // console.log(post);
      }
 
      guardarLikes(likes: number) {
          this.post.likes = likes;
          this.post.userLiked.push(JSON.parse(localStorage.getItem('usuarioActual')).id);
-         console.log(this.post);
+        //  console.log(this.post);
          this._postService.editPost(this.post).subscribe();
      }
 

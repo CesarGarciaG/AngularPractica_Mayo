@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: "header-bar",
@@ -9,9 +11,16 @@ export class HeaderBarComponent {
 
     usuarioActual: string = '';
 
+    constructor(private _postService: PostService, private _router: Router) {}
+
     ngOnInit() {
         if(localStorage.getItem('usuarioActual'))
             this.usuarioActual = localStorage.getItem('usuarioActual');
+    }
+
+    searchPost(value: string) {
+        localStorage.setItem('searchValue', `q=${value}`);
+        this._router.navigate(['/search-posts']);
     }
 
     logout() {

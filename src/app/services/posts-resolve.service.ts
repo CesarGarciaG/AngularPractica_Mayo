@@ -34,6 +34,9 @@ export class PostsResolve implements Resolve<Post[]> {
         if(route.params.categoryId)
             return this._postService.getCategoryPosts(route.params.categoryId);
 
+        if(route.routeConfig.path === 'search-posts')
+            return this._postService.getPostsSearched(localStorage.getItem('searchValue'));
+
         return this._postService.getPosts();
     }
 }
