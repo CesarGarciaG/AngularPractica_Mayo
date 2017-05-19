@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormGroup } from "@angular/forms";
+import * as faker from "faker";
 
 import { Post } from "../../models/post";
 import { User } from "../../models/user";
+import { PostService } from '../../services/post.service';
 
 @Component({
     selector: "post-form",
@@ -14,6 +16,7 @@ export class PostFormComponent implements OnInit {
     nowDatetimeLocal: string;
     publicationDateScheduled: boolean = false;
     isNew: boolean = true;
+    rutaFoto: string;
 
     @Input() postEditing: Post = {
         id: 0,
@@ -35,7 +38,12 @@ export class PostFormComponent implements OnInit {
     };
     @Output() postSubmitted: EventEmitter<Post> = new EventEmitter();
 
+    constructor(private _postService: PostService) {}
+
     ngOnInit(): void {
+        this._postService.generarRutaFoto().subscribe((ruta) => {
+            this.rutaFoto = ruta;
+        })
         this.nowDatetimeLocal = this._formatDateToDatetimeLocal(new Date());
         if(this.postEditing.title !== '') {
             this.isNew = false;
@@ -88,7 +96,8 @@ export class PostFormComponent implements OnInit {
          if(this.isNew) {
             let post: Post = Post.fromJson(form.value);
             post.categories = [];
-            post.media = '';
+            // post.media = '';
+            post.media = this.rutaFoto;
             post.likes = 0;
             post.userLiked = [];
             // post.author = User.defaultUser();

@@ -1822,6 +1822,11 @@
       "resolved": "https://registry.npmjs.org/extsprintf/-/extsprintf-1.0.2.tgz",
       "dev": true
     },
+    "faker": {
+      "version": "4.1.0",
+      "from": "faker@latest",
+      "resolved": "https://registry.npmjs.org/faker/-/faker-4.1.0.tgz"
+    },
     "fastparse": {
       "version": "1.1.1",
       "from": "fastparse@>=1.1.1 <2.0.0",

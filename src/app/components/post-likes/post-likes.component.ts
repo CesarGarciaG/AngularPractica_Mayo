@@ -20,16 +20,13 @@ export class PostLikesComponent implements OnInit {
   }
 
   emitLikes() {
-      if(this.isLiked) {
+      if(this.isLiked)
           this.likes--;
-          this.likeBtn.emit(this.likes);
-          this.isLiked = this.checkLiked();
-      }
-      else {
+      else 
           this.likes++;
-          this.likeBtn.emit(this.likes);
-          this.isLiked = this.checkLiked();
-      }
+      
+      this.likeBtn.emit(this.likes);
+      this.isLiked = this.checkLiked();
   }
 
   checkLiked(): boolean {

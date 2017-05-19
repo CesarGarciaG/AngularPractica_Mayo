@@ -167,4 +167,15 @@ export class PostService {
         // debugger;
         // return null;
     }
+
+    generarRutaFoto(): Observable<string> {
+        return this._http
+            .get('http://faker.hook.io/?property=image.imageUrl')
+            .map((res) => {
+                let rutaFoto = res.text();
+                rutaFoto = rutaFoto.replace(new RegExp('\"', 'g'), '');
+                // console.log(rutaFoto);
+                return rutaFoto;
+            });
+    }
 }
